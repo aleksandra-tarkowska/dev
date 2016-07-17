@@ -1,6 +1,0 @@
-$OMERO_PREFIX/bin/omero config set omero.db.host pg95
-$OMERO_PREFIX/bin/omero config set omero.db.name "omero"
-$OMERO_PREFIX/bin/omero config set omero.data.dir "/home/omero/data"
-
-
-$OMERO_PREFIX/bin/omero config set omero.web.server_list '[["webmetadata52", 4064, "webmetadata52"]]'

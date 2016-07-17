@@ -1,18 +1,12 @@
 redis:
     image: redis
 
-maven:
-    build: ./ome/docker/maven
-    volumes:
-        - ./omerodev/src:/usr/src/app
-        - ./omerodev/src/.m2:/root/.m2
-
-omerodev:
+metadata52:
     extends:
         file: common-services.yml
         service: baseomero
     volumes:
-        - ./omerodev/src:/home/omero
+        - "./${BUILD_NAME}/src:/home/omero"
     ports:
         - "4064:4064"
         - "4063:4063"
@@ -22,26 +16,26 @@ omerodev:
     extra_hosts:
         - "pg95:10.0.2.2"
 
-webomerodev:
+webmetadata52:
     extends:
         file: common-services.yml
         service: baseweb
     links:
         - redis
-        - omerodev
+        - metadata52
     volumes:
-        - ./omerodev/src:/home/omero
+        - "./${BUILD_NAME}/src:/home/omero"
 
 nginx:
     extends:
         file: common-services.yml
         service: basenginx
     links:
-        - webomerodev
+        - webmetadata52
     volumes:
-        - ./omerodev/src:/home/omero
-        - ./omerodev/nginx/log:/var/log/nginx
-        - ./omerodev/nginx/sslcert:/etc/nginx/ssl
+        - "./${BUILD_NAME}/src:/home/omero"
+        - "./${BUILD_NAME}/nginx/log:/var/log/nginx"
+        - "./${BUILD_NAME}/nginx/sslcert:/etc/nginx/ssl"
     ports:
         - "80:80"
         - "443:443"

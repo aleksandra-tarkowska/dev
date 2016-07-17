@@ -13,16 +13,23 @@ develop:
     git clone git://github.com/openmicroscopy/bioformats omerodev/src/bf.git
     git clone git://github.com/openmicroscopy/openmicroscopy omerodev/src/omero.git
 
-manage:
--------
-
-    docker-compose -f docker-compose-m52.yml build|up -d|stop|rm
-    docker-compose -f docker-compose-dev.yml build|up -d|stop|rm
+build BF:
+---------
 
     source metadata52/build.env
     source omerodev/build.env
 
-    ./bash_script/buildsrc
+    ./buildbf
+
+build OMERO:
+------------
+
+    source metadata52/build.env
+    source omerodev/build.env
+
+    docker-compose -f docker-compose-omero.yml build|up -d|stop|rm
+
+    ./buildsrc
 
 Limitations:
 ------------
