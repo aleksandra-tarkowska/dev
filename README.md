@@ -5,7 +5,7 @@ metadata:
 ---------
 
     git clone -b metadata git://github.com/openmicroscopy/bioformats metadata52/src/bf.git
-    git clone -b metadata git://github.com/openmicroscopy/openmicroscopy metadata52/src/omero.git
+    git clone -b metadata52 git://github.com/openmicroscopy/openmicroscopy metadata52/src/omero.git
 
 develop:
 --------
