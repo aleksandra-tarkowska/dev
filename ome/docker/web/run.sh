@@ -1,9 +1,9 @@
 #!/bin/bash
 
-rm -f /home/omero/OMERO.server/var/django.pid
+rm -f /home/omero/OMERO.web/var/django.pid
 
-if [ -L "/home/omero/OMERO.server" ]; then
-    source /home/omero/omero-virtualenv/bin/activate; /home/omero/OMERO.server/bin/omero web start --foreground
-else
-    sudo /usr/sbin/sshd -D
+if [ -L "/home/omero/OMERO.web" ]; then
+    source /home/omero/omeroweb-venv/bin/activate
+    pip install --upgrade -r /home/omero/OMERO.web/share/web/requirements-py27-nginx.txt
+    /home/omero/OMERO.web/bin/omero web start --foreground
 fi

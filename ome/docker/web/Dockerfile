@@ -33,14 +33,13 @@ RUN yum install -y ice ice-python \
     # ice-servers \
     && yum clean all
 
+# Install IcePy 3.6
+#RUN yum -y install gcc-c++
+#RUN yum -y install openssl-devel bzip2-devel expat-devel
 
 RUN yum install -y python-redis && yum clean all
 
 EXPOSE 4080
-
-# install Pillow
-RUN pip install "Pillow<2.9"
-
 
 ADD ./run.sh /tmp/run.sh
 RUN chown omero:omero /tmp/run.sh
@@ -51,5 +50,11 @@ RUN chmod a+x /tmp/run.sh
 USER omero
 ENV HOME /home/omero
 WORKDIR /home/omero
+
+RUN virtualenv /home/omero/omeroweb-venv
+
+# install Pillow
+RUN source /home/omero/omeroweb-venv/bin/activate; pip install "Pillow<2.9"
+RUN source /home/omero/omeroweb-venv/bin/activate; pip install "zeroc-ice>3.5,<3.7"
 
 CMD ["/tmp/run.sh"]

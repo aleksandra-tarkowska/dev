@@ -7,7 +7,7 @@ omeroserver:
         file: common-services.yml
         service: baseomero
     volumes:
-        - "./${BUILD_NAME}/src:/home/omero"
+        - "./${BUILD_NAME}/src/dist:/home/omero/OMERO.server"
     ports:
         - "4064:4064"
         - "4063:4063"
@@ -22,7 +22,7 @@ omeroweb:
         - redis
         - omeroserver
     volumes:
-        - "./${BUILD_NAME}/src:/home/omero"
+        - "./${BUILD_NAME}/dist:/home/omero/OMERO.web"
 
 nginx:
     extends:
@@ -31,7 +31,7 @@ nginx:
     links:
         - omeroweb
     volumes:
-        - "./${BUILD_NAME}/src:/home/omero"
+        - "./${BUILD_NAME}/dist:/home/omero/OMERO.web"
         - "./${BUILD_NAME}/nginx/log:/var/log/nginx"
         - "./${BUILD_NAME}/nginx/sslcert:/etc/nginx/ssl"
     ports:

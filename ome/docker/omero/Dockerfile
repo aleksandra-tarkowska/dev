@@ -3,9 +3,6 @@ MAINTAINER A.Tarkowska@dundee.ac.uk
 
 USER root
 
-# install Pillow
-RUN pip install "Pillow<2.9"
-
 # STARTUP script
 ADD ./run.sh /tmp/run.sh
 RUN chown omero:omero /tmp/run.sh

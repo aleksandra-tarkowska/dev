@@ -1,5 +1,5 @@
 #!/bin/bash
 
 /tmp/remove_symlinks.sh \
-    && omero.git/build.py build-dev \
+    && BUILD_NUMBER=1 omero.git/build.py build-dev \
     && /tmp/add_symlinks.sh

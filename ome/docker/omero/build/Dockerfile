@@ -1,13 +1,5 @@
-FROM centos:centos7
+FROM openmicroscopy/omero-ssh-daemon-c7:0.1.1
 MAINTAINER A.Tarkowska@dundee.ac.uk
-
-
-RUN yum install -y sudo \
-    && yum clean all
-
-# To avoid error: sudo: sorry, you must have a tty to run sudo
-RUN sed -i -e "s/Defaults    requiretty.*/ #Defaults    requiretty/g" /etc/sudoers
-
 
 # OMERO.py prerequesties
 RUN yum install -y epel-release \
@@ -50,10 +42,8 @@ RUN yum -y install postgresql95 \
 # install sphinx
 RUN pip install sphinx
 
-# Add OMERO user
-RUN useradd omero && \
-	echo 'omero:omero' | chpasswd omero &&\
-	echo "omero ALL= (ALL) NOPASSWD: ALL" >> /etc/sudoers.d/omero
+# install Pillow
+RUN pip install "Pillow<2.9"
 
 # SYMBOLIK LINKS
 ADD ./symlinks/add_symlinks.sh /tmp/add_symlinks.sh
