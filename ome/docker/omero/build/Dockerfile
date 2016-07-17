@@ -63,7 +63,7 @@ VOLUME /home/omero
 # AS OMERO user
 USER omero
 ENV HOME /home/omero
-WORKDIR /home/omero
+WORKDIR /home/omero/omero.git
 
 # BUILD
 # ONBUILD RUN /tmp/run.sh

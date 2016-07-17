@@ -1,7 +1,5 @@
 #!/bin/bash
 
-set -eux
-
 if [ -L $OMERO_PREFIX/lib/python/omeroweb ]; then
   rm $OMERO_PREFIX/lib/python/omeroweb
 fi

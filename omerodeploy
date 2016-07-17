@@ -12,4 +12,3 @@ if [ -n "${BUILD_NAME}" ]; then
 else 
     echo "source BUILD_NAME/build.env"
 fi
-    

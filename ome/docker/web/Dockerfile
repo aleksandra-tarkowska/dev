@@ -5,7 +5,7 @@ MAINTAINER A.Tarkowska@dundee.ac.uk
 RUN yum install -y epel-release \
     && yum clean all
 
-RUN yum install -y unzip \
+RUN yum install -y gcc-c++ \
     zlib-devel \
     libjpeg-devel \
     libpng-devel \
@@ -55,6 +55,8 @@ RUN virtualenv /home/omero/omeroweb-venv
 
 # install Pillow
 RUN source /home/omero/omeroweb-venv/bin/activate; pip install "Pillow<2.9"
-RUN source /home/omero/omeroweb-venv/bin/activate; pip install "zeroc-ice>3.5,<3.7"
+
+# Install IcePy 3.6
+# RUN source /home/omero/omeroweb-venv/bin/activate; pip install "zeroc-ice>3.5,<3.7"
 
 CMD ["/tmp/run.sh"]
