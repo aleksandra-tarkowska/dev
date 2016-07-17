@@ -45,12 +45,3 @@ nginx:
     ports:
         - "80:80"
         - "443:443"
-
-
-# PG permission deniede erro on mac
-# docker run --name mypostgres -p 15432:15432 -e POSTGRES_PASSWORD=postgres -e POSTGRES_USER=postgres -d -v /data/pgdata:/var/lib/postgresql/data postgres
-
-# create omero user
-# createuser  -h pg95 -U postgres omero --interactive
-
-# docker-compose -f docker-compose-m52.yml build|up -d|stop|rm

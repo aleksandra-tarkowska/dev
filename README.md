@@ -17,6 +17,7 @@ manage:
 -------
 
     docker-compose -f docker-compose-m52.yml build|up -d|stop|rm
+    docker-compose -f docker-compose-dev.yml build|up -d|stop|rm
 
     source metadata52/build.env
     source omerodev/build.env
