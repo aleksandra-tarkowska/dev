@@ -1,10 +1,18 @@
+baseomerobuild:
+    build: ./ome/docker/omero/build
+    container_name: "omerobuild"
+#    volumes:
+#        - ./ome/src:/home/omero
+
 baseomero:
     build: ./ome/docker/omero
+    container_name: "omeroserver"
 #    volumes:
 #        - ./ome/src:/home/omero
 
 baseweb:
     build: ./ome/docker/web
+    container_name: "omeroweb"
 #    volumes:
 #        - ./ome/src:/home/omero
 #        - ./ome/nginx/conf.d:/home/omero/nginx
@@ -13,6 +21,7 @@ baseweb:
 
 basenginx:
     build: ./ome/docker/nginx
+    container_name: "omeronginx"
 #    volumes:
 #        - ./ome/nginx/conf.d:/etc/nginx/conf.d
 #        - ./ome/src:/home/omero

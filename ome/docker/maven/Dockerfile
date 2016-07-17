@@ -3,4 +3,6 @@ MAINTAINER A.Tarkowska@dundee.ac.uk
 
 WORKDIR /usr/src/app/bf.git
 
-ONBUILD RUN mvn install -DskipTests
+# ONBUILD RUN mvn install -DskipTests
+
+CMD ["mvn", "install", "-DskipTests"]

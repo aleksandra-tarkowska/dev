@@ -19,7 +19,7 @@ build BF:
     source metadata52/build.env
     source omerodev/build.env
 
-    ./buildbf
+    ./buildbf build|up|up -d|stop|rm
 
 build OMERO:
 ------------
@@ -27,9 +27,9 @@ build OMERO:
     source metadata52/build.env
     source omerodev/build.env
 
-    docker-compose -f docker-compose-omero.yml build|up -d|stop|rm
+    ./omerobuild build|up|up -d|stop|rm
 
-    ./buildsrc
+    ./omerodeploy build|up|up -d|stop|rm
 
 Limitations:
 ------------

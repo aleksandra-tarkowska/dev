@@ -1,6 +1,7 @@
 #!/bin/bash
 
-$DOCKER_BIN /bin/bash -c "
+set -eux
+
 if [ -L $OMERO_PREFIX/lib/python/omeroweb ]; then
   rm $OMERO_PREFIX/lib/python/omeroweb
 fi
@@ -44,4 +45,3 @@ fi
 if [ -L $OMERO_PREFIX/../components/tools/OmeroPy/build/lib/omero/plugins ]; then
   rm $OMERO_PREFIX/../components/tools/OmeroPy/build/lib/omero/plugins
 fi
-"

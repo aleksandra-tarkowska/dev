@@ -1,41 +1,8 @@
-redis:
-    image: redis
-
-metadata52:
+omerobuild:
     extends:
         file: common-services.yml
-        service: baseomero
+        service: baseomerobuild
     volumes:
         - "./${BUILD_NAME}/src:/home/omero"
-    ports:
-        - "4064:4064"
-        - "4063:4063"
     environment:
-        - OMERO_SRC=/home/omero/omero.git
-        - OMERO_PREFIX=/home/omero/OMERO.server
-    extra_hosts:
-        - "pg95:10.0.2.2"
-
-webmetadata52:
-    extends:
-        file: common-services.yml
-        service: baseweb
-    links:
-        - redis
-        - metadata52
-    volumes:
-        - "./${BUILD_NAME}/src:/home/omero"
-
-nginx:
-    extends:
-        file: common-services.yml
-        service: basenginx
-    links:
-        - webmetadata52
-    volumes:
-        - "./${BUILD_NAME}/src:/home/omero"
-        - "./${BUILD_NAME}/nginx/log:/var/log/nginx"
-        - "./${BUILD_NAME}/nginx/sslcert:/etc/nginx/ssl"
-    ports:
-        - "80:80"
-        - "443:443"
+        - OMERO_PREFIX=/home/omero/omero.git/dist

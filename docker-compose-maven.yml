@@ -1,5 +1,6 @@
-maven:
+bfmaven:
     build: ./ome/docker/maven
+    container_name: "bfmaven"
     volumes:
         - "./${BUILD_NAME}/src:/usr/src/app"
         - "./${BUILD_NAME}/src/.m2:/root/.m2"
