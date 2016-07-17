@@ -1,0 +1,18 @@
+baseomero:
+    build: ./ome/docker/omero
+#    volumes:
+#        - ./ome/src:/home/omero
+
+baseweb:
+    build: ./ome/docker/web
+#    volumes:
+#        - ./ome/src:/home/omero
+#        - ./ome/nginx/conf.d:/home/omero/nginx
+    environment:
+        - WEB_PREFIX=/web
+
+basenginx:
+    build: ./ome/docker/nginx
+#    volumes:
+#        - ./ome/nginx/conf.d:/etc/nginx/conf.d
+#        - ./ome/src:/home/omero

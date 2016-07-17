@@ -1,0 +1,56 @@
+redis:
+    image: redis
+
+maven:
+    build: ./ome/docker/maven
+    volumes:
+        - ./omerodev/src:/usr/src/app
+        - ./omerodev/src/.m2:/root/.m2
+
+omerodev:
+    extends:
+        file: common-services.yml
+        service: baseomero
+    volumes:
+        - ./omerodev/src:/home/omero
+    ports:
+        - "4064:4064"
+        - "4063:4063"
+    environment:
+        - OMERO_SRC=/home/omero/omero.git
+        - OMERO_PREFIX=/home/omero/OMERO.server
+    extra_hosts:
+        - "pg95:10.0.2.2"
+
+webomerodev:
+    extends:
+        file: common-services.yml
+        service: baseweb
+    links:
+        - redis
+        - omerodev
+    volumes:
+        - ./omerodev/src:/home/omero
+
+nginx:
+    extends:
+        file: common-services.yml
+        service: basenginx
+    links:
+        - webomerodev
+    volumes:
+        - ./omerodev/src:/home/omero
+        - ./omerodev/nginx/log:/var/log/nginx
+        - ./omerodev/nginx/sslcert:/etc/nginx/ssl
+    ports:
+        - "80:80"
+        - "443:443"
+
+
+# PG permission deniede erro on mac
+# docker run --name mypostgres -p 15432:15432 -e POSTGRES_PASSWORD=postgres -e POSTGRES_USER=postgres -d -v /data/pgdata:/var/lib/postgresql/data postgres
+
+# create omero user
+# createuser  -h pg95 -U postgres omero --interactive
+
+# docker-compose -f docker-compose-m52.yml build|up -d|stop|rm
