@@ -2,3 +2,7 @@ metadata52/src/*
 metadata52/nginx/*
 omerodev/src/*
 omerodev/nginx/*
+
+.DS_Store
+metadata52/.DS_Store
+omerodev/.DS_Store
