@@ -14,27 +14,35 @@ Clone repository:
         git clone git://github.com/openmicroscopy/bioformats omerodev/src/bf.git
         git clone git://github.com/openmicroscopy/openmicroscopy omerodev/src/omero.git
 
+
+Prepare:
+--------
+
+    source metadata52/build.env
+    source omerodev/build.env
+
+
 Build:
 ------
 
 - BF:
 
-        source metadata52/build.env
-        source omerodev/build.env
-
-        ./bf build|up|up -d|stop|rm
+        ./bf build|up|rm
 
 - OMERO:
 
-        source metadata52/build.env
-        source omerodev/build.env
+        BUILD_CMD=build-dev ./omero build|up|rm
 
-        ./omerobuild build|up|up -d|stop|rm
+Run:
+----
 
-Run OMERO:
-----------
+- SERVER:
 
-    ./omerodeploy build|up|up -d|stop|rm
+        BUILD_CMD=build-dev ./server build|up -d|logs -f|stop|rm
+
+- WEB:
+
+        BUILD_CMD=build-dev ./web build|up -d|logs -f|stop|rm
 
 
 Limitations:

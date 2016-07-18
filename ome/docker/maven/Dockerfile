@@ -18,11 +18,12 @@ RUN useradd omero \
 
 EXPOSE 22
 
+# Change user id to fix permissions issues
+ARG USER_ID=1000
+RUN usermod -u $USER_ID omero
 
 USER omero
-
 WORKDIR /home/omero/bf.git
 
-# ONBUILD RUN mvn install -DskipTests
-
-CMD ["mvn"]
+# skill tests: mvn install -DskipTests
+CMD ["mvn", "install"]

@@ -5,6 +5,9 @@ MAINTAINER A.Tarkowska@dundee.ac.uk
 RUN yum install -y epel-release \
     && yum clean all
 
+RUN yum install -y unzip git \
+    && yum clean all
+    
 RUN yum install -y gcc-c++ \
     zlib-devel \
     libjpeg-devel \
@@ -30,7 +33,6 @@ RUN curl -o /etc/yum.repos.d/zeroc-ice-el7.repo \
     http://download.zeroc.com/Ice/3.5/el7/zeroc-ice-el7.repo
 
 RUN yum install -y ice ice-python \
-    # ice-servers \
     && yum clean all
 
 # Install IcePy 3.6
@@ -41,20 +43,27 @@ RUN yum install -y python-redis && yum clean all
 
 EXPOSE 4080
 
+# Change user id to fix permissions issues
+ARG USER_ID=1000
+RUN usermod -u $USER_ID omero
+
+# STARTUP
 ADD ./run.sh /tmp/run.sh
 RUN chown omero:omero /tmp/run.sh
 RUN chmod a+x /tmp/run.sh
-
 
 # AS OMERO user
 USER omero
 ENV HOME /home/omero
 WORKDIR /home/omero
 
-RUN virtualenv /home/omero/omeroweb-venv
+RUN virtualenv /home/omero/omeroweb-venv --system-site-packages
 
 # install Pillow
-RUN source /home/omero/omeroweb-venv/bin/activate; pip install "Pillow<2.9"
+RUN source /home/omero/omeroweb-venv/bin/activate; pip install \
+    "Pillow<2.9" \
+    "django-redis-cache<=1.6.5"
+
 
 # Install IcePy 3.6
 # RUN source /home/omero/omeroweb-venv/bin/activate; pip install "zeroc-ice>3.5,<3.7"

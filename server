@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 # build omero
 
@@ -8,8 +8,7 @@ PATHDIR=`dirname $0`
 
 if [ -n "${BUILD_NAME}" ]; then
     echo "BUILD_NAME is set to: ${BUILD_NAME}"
-    docker-compose -f docker-compose-omero.yml "$@"
+    docker-compose -f docker-compose-server.yml "$@"
 else 
     echo "source BUILD_NAME/build.env"
 fi
-    

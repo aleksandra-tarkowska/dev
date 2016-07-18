@@ -1,0 +1,35 @@
+redis:
+    image: redis
+    container_name: "redis"
+
+omeroweb:
+    extends:
+        file: common-services.yml
+        service: baseweb
+    links:
+        - redis
+    volumes:
+        - "./${BUILD_NAME}/src/omero.git:/home/omero/src"
+        - "./${BUILD_NAME}/dist/OMERO.server:/home/omero/OMERO.py"
+        - "./${BUILD_NAME}/dist/static:/home/omero/static"
+        - "${PWD}/${BUILD_NAME}/config/omeroweb.config:/home/omero/omeroweb.config"
+        - "./${BUILD_NAME}/nginx/conf.d:/home/omero/conf.d"
+    environment:
+        - OMEROWEB_SRC=/home/omero/src/components/tools/OmeroWeb
+        - OMERO_PY=/home/omero/OMERO.py
+
+nginx:
+    extends:
+        file: common-services.yml
+        service: basenginx
+    links:
+        - omeroweb
+    volumes:
+        - "./${BUILD_NAME}/dist/OMERO.server:/home/omero/OMERO.server"
+        - "${PWD}/${BUILD_NAME}/nginx/conf.d:/etc/nginx/conf.d"
+        - "./${BUILD_NAME}/dist/static:/home/omero/static"
+        - "./${BUILD_NAME}/nginx/log:/var/log/nginx"
+#        - "./${BUILD_NAME}/nginx/sslcert:/etc/nginx/ssl"
+    ports:
+        - "80:80"
+#        - "443:443"

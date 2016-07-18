@@ -3,6 +3,6 @@ omerobuild:
         file: common-services.yml
         service: baseomerobuild
     volumes:
-        - "./${BUILD_NAME}/src:/home/omero"
+        - "./${BUILD_NAME}:/home/omero"
     environment:
-        - OMERO_PREFIX=/home/omero/omero.git/dist
+        - "BUILD_CMD=${BUILD_CMD}"

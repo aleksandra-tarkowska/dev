@@ -1,4 +1,4 @@
-FROM dev_omerobuild:latest
+FROM omero_omerobuild:latest
 MAINTAINER A.Tarkowska@dundee.ac.uk
 
 USER root

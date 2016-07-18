@@ -47,25 +47,22 @@ RUN pip install sphinx
 # install Pillow
 RUN pip install "Pillow<2.9"
 
-# SYMBOLIK LINKS
-ADD ./symlinks/add_symlinks.sh /tmp/add_symlinks.sh
-RUN chown omero:omero /tmp/add_symlinks.sh
-RUN chmod +x /tmp/add_symlinks.sh
+VOLUME /home/omero
 
-ADD ./symlinks/remove_symlinks.sh /tmp/remove_symlinks.sh
-RUN chown omero:omero /tmp/remove_symlinks.sh
-RUN chmod +x /tmp/remove_symlinks.sh
+# Change user id to fix permissions issues
+ARG USER_ID=1000
+RUN usermod -u $USER_ID omero
 
+# RUN sript
 ADD ./run.sh /tmp/run.sh
 RUN chown omero:omero /tmp/run.sh
 RUN chmod a+x /tmp/run.sh
 
-VOLUME /home/omero
-
 # AS OMERO user
 USER omero
 ENV HOME /home/omero
-WORKDIR /home/omero/omero.git
+ENV BUILD_CMD "build-dev release-all"
+WORKDIR /home/omero/src/omero.git
 
 # BUILD
 # ONBUILD RUN /tmp/run.sh

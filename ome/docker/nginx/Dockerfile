@@ -17,7 +17,15 @@ RUN ln -sf /dev/stdout /var/log/nginx/access.log \
 
 EXPOSE 80 443
 
+# Change user id to fix permissions issues
+ARG USER_ID=1000
+RUN usermod -u $USER_ID omero
+
+# RUN sript
+ADD ./run.sh /tmp/run.sh
+RUN chmod a+x /tmp/run.sh
+
 # workaround to avoid 403 on static files
 RUN chmod a+x /home/omero
 
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["/tmp/run.sh"]

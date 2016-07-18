@@ -1,5 +1,0 @@
-config set omero.db.host pg95
-config set omero.db.name "omerodev"
-config set omero.data.dir "/home/omero/data"
-
-config set omero.web.server_list '[["omerodev", 4064, "omerodev"]]'
