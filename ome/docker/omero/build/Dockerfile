@@ -5,8 +5,10 @@ MAINTAINER A.Tarkowska@dundee.ac.uk
 RUN yum install -y epel-release \
     && yum clean all
 
-RUN yum install -y unzip \
-    zlib-devel \
+RUN yum install -y unzip git \
+    && yum clean all
+
+RUN yum install -y zlib-devel \
     libjpeg-devel \
     libpng-devel \
     libtiff-devel \
