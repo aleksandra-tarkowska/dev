@@ -1,4 +1,4 @@
-omeroserver:
+omerotest:
     image: omero_omerobuild:latest
     volumes:
         - "./dist/OMERO.server:/home/omero/OMERO.server"

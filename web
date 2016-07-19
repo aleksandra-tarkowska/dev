@@ -9,6 +9,4 @@ PATHDIR=`dirname $0`
 if [ -n "${PWD}" ]; then
     echo "You are starting server ${PWD}/dist/OMERO.server"
     docker-compose -f docker-compose-web.yml "$@"
-else 
-    echo "source build.env to start server"
 fi

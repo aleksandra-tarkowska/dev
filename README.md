@@ -39,19 +39,21 @@ Build:
 Run:
 ----
 
+Review .env file
+
 - SERVER:
 
-        BUILD_CMD=build-dev ./server build|up -d|logs -f|stop|rm
+        ./server build|up -d|logs -f|stop|rm
 
 - WEB:
 
-        BUILD_CMD=build-dev ./web build|up -d|logs -f|stop|rm
+        ./web build|up -d|logs -f|stop|rm
 
 
 Limitations:
 ------------
 
-PG permission denied error on mac
+PG container permission denied on mac. Use host.
 
     docker run --name mypostgres -p 5432:5432 -d -v ./pgdata:/var/lib/postgresql/data postgres
 
