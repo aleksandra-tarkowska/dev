@@ -1,5 +1,6 @@
 bfmaven:
     build: ./ome/docker/maven
-    container_name: "bfmaven"
     volumes:
-        - "./${BUILD_NAME}/src:/home/omero"
+        - "./src:/home/omero"
+#    command:
+#        - mvn install -DskipTests

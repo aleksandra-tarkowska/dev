@@ -62,7 +62,7 @@ RUN chmod a+x /tmp/run.sh
 USER omero
 ENV HOME /home/omero
 ENV BUILD_CMD "build-dev release-all"
-WORKDIR /home/omero/src/omero.git
+WORKDIR /home/omero/omero.git
 
 # BUILD
 # ONBUILD RUN /tmp/run.sh

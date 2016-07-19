@@ -1,27 +1,35 @@
 baseomerobuild:
     build: ./ome/docker/omero/build
-    container_name: "omerobuild"
 #    volumes:
-#        - ./ome/src:/home/omero
+#        - ".:/home/omero"
 
 baseomero:
     build: ./ome/docker/omero
-    container_name: "omeroserver"
 #    volumes:
-#        - ./ome/src:/home/omero
+#        - "./dist/OMERO.server:/home/omero/OMERO.server"
+#        - "./data:/home/omero/data"
+#        - "${PWD}/config/omero.config:/home/omero/omero.config"
 
 baseweb:
     build: ./ome/docker/web
-    container_name: "omeroweb"
 #    volumes:
-#        - ./ome/src:/home/omero
-#        - ./ome/nginx/conf.d:/home/omero/nginx
-    environment:
-        - WEB_PREFIX=/web
-
+#        - "./src/omero.git:/home/omero/src"
+#        - "./src/dist/OMERO.server:/home/omero/OMERO.py"
+#        - "./src/dist/static:/home/omero/static"
+#        - "${PWD}/config/omeroweb.config:/home/omero/omeroweb.config"
+#        - "./src/nginx/conf.d:/home/omero/conf.d"
+#    environment:
+#        - OMEROWEB_SRC=/home/omero/src/components/tools/OmeroWeb
+#        - OMERO_PY=/home/omero/OMERO.py
+ 
 basenginx:
     build: ./ome/docker/nginx
-    container_name: "omeronginx"
 #    volumes:
-#        - ./ome/nginx/conf.d:/etc/nginx/conf.d
-#        - ./ome/src:/home/omero
+#        - "./src/dist/OMERO.server:/home/omero/OMERO.server"
+#        - "${PWD}/src/nginx/conf.d:/etc/nginx/conf.d"
+#        - "./src/dist/static:/home/omero/static"
+#        - "./src/nginx/log:/var/log/nginx"
+#        - "./src/nginx/sslcert:/etc/nginx/ssl"
+#    ports:
+#        - "80:80"
+#        - "443:443"

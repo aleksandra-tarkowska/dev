@@ -6,9 +6,9 @@ set -eux
 
 PATHDIR=`dirname $0`
 
-if [ -n "${BUILD_NAME}" ]; then
-    echo "BUILD_NAME is set to: ${BUILD_NAME}"
+if [ -n "${PWD}" ]; then
+    echo "You are starting server ${PWD}/dist/OMERO.server"
     docker-compose -f docker-compose-server.yml "$@"
 else 
-    echo "source BUILD_NAME/build.env"
+    echo "source build.env to start server"
 fi

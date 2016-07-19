@@ -1,6 +1,5 @@
 redis:
     image: redis
-    container_name: "redis"
 
 omeroweb:
     extends:
@@ -9,11 +8,11 @@ omeroweb:
     links:
         - redis
     volumes:
-        - "./${BUILD_NAME}/src/omero.git:/home/omero/src"
-        - "./${BUILD_NAME}/dist/OMERO.server:/home/omero/OMERO.py"
-        - "./${BUILD_NAME}/dist/static:/home/omero/static"
-        - "${PWD}/${BUILD_NAME}/config/omeroweb.config:/home/omero/omeroweb.config"
-        - "./${BUILD_NAME}/nginx/conf.d:/home/omero/conf.d"
+        - "./src/omero.git:/home/omero/src"
+        - "./src/dist/OMERO.server:/home/omero/OMERO.py"
+        - "./src/dist/static:/home/omero/static"
+        - "${PWD}/config/omeroweb.config:/home/omero/omeroweb.config"
+        - "./src/nginx/conf.d:/home/omero/conf.d"
     environment:
         - OMEROWEB_SRC=/home/omero/src/components/tools/OmeroWeb
         - OMERO_PY=/home/omero/OMERO.py
@@ -25,11 +24,11 @@ nginx:
     links:
         - omeroweb
     volumes:
-        - "./${BUILD_NAME}/dist/OMERO.server:/home/omero/OMERO.server"
-        - "${PWD}/${BUILD_NAME}/nginx/conf.d:/etc/nginx/conf.d"
-        - "./${BUILD_NAME}/dist/static:/home/omero/static"
-        - "./${BUILD_NAME}/nginx/log:/var/log/nginx"
-#        - "./${BUILD_NAME}/nginx/sslcert:/etc/nginx/ssl"
+        - "./src/dist/OMERO.server:/home/omero/OMERO.server"
+        - "${PWD}/src/nginx/conf.d:/etc/nginx/conf.d"
+        - "./src/dist/static:/home/omero/static"
+        - "./src/nginx/log:/var/log/nginx"
+#        - "./src/nginx/sslcert:/etc/nginx/ssl"
     ports:
         - "80:80"
 #        - "443:443"

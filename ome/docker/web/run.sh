@@ -2,8 +2,8 @@
 
 set -e
 
-$servername="localhost"
-$port=80
+servername="localhost"
+port=80
 
 export PYTHONPATH=$OMERO_PY/lib/python:$OMERO_PY/lib/fallback:$OMERO_PY/lib/scripts:${PYTHONPATH-}
 
@@ -20,7 +20,7 @@ $OMERO_PY/bin/omero load /home/omero/omeroweb.config
 echo "Generating OMERO.web nginx config for $servername:$port ..."
 $OMERO_PY/bin/omero web config nginx --http $port --servername $servername > /tmp/omeroweb.nginx.conf
 sudo cp /tmp/omeroweb.nginx.conf $HOME/conf.d/
-
+echo "nginx config saved in $HOME/conf.d/"
 
 # Instead of: $OMERO_PY/bin/omero web start --foreground
 echo "Starting up OMERO.web config..."

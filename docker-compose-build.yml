@@ -3,6 +3,6 @@ omerobuild:
         file: common-services.yml
         service: baseomerobuild
     volumes:
-        - "./${BUILD_NAME}:/home/omero"
+        - "./src:/home/omero"
     environment:
-        - "BUILD_CMD=${BUILD_CMD}"
+        - "BUILD_CMD=build-dev"

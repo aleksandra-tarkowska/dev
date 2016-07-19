@@ -1,9 +1,9 @@
 omeroserver:
     image: omero_omerobuild:latest
     volumes:
-        - "./${BUILD_NAME}/dist/OMERO.server:/home/omero/OMERO.server"
-        - "./${BUILD_NAME}/datatest:/home/omero/data"
-        - "${PWD}/${BUILD_NAME}/config/test.config:/home/omero/omero.config"
+        - "./dist/OMERO.server:/home/omero/OMERO.server"
+        - "./datatest:/home/omero/data"
+        - "${PWD}/config/test.config:/home/omero/omero.config"
     extra_hosts:
         - "pg95:10.0.2.2"
     command:

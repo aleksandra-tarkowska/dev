@@ -1,25 +1,34 @@
 HOW TO:
 =======
 
+Clone me:
+
+    git clone git://github.com/aleksandra-tarkowska/dev omerodev
+    cd omerodev
+or
+
+    git clone git://github.com/aleksandra-tarkowska/dev metadata52
+    cd metadata52
+
+
 Clone repository:
 -----------------
 
-- metadata:
-
-        git clone -b metadata git://github.com/openmicroscopy/bioformats metadata52/src/bf.git
-        git clone -b metadata52 git://github.com/openmicroscopy/openmicroscopy metadata52/src/omero.git
-
 - develop:
 
-        git clone git://github.com/openmicroscopy/bioformats omerodev/src/bf.git
-        git clone git://github.com/openmicroscopy/openmicroscopy omerodev/src/omero.git
+        git clone git://github.com/openmicroscopy/bioformats src/bf.git
+        git clone git://github.com/openmicroscopy/openmicroscopy src/omero.git
+
+- metadata:
+
+        git clone -b metadata git://github.com/openmicroscopy/bioformats src/bf.git
+        git clone -b metadata52 git://github.com/openmicroscopy/openmicroscopy src/omero.git
 
 
 Prepare:
 --------
 
-    source metadata52/build.env
-    source omerodev/build.env
+    source build.env
 
 
 Build:

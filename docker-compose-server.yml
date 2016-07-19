@@ -3,9 +3,9 @@ omeroserver:
         file: common-services.yml
         service: baseomero
     volumes:
-        - "./${BUILD_NAME}/dist/OMERO.server:/home/omero/OMERO.server"
-        - "./${BUILD_NAME}/data:/home/omero/data"
-        - "${PWD}/${BUILD_NAME}/config/omero.config:/home/omero/omero.config"
+        - "./dist/OMERO.server:/home/omero/OMERO.server"
+        - "./data:/home/omero/data"
+        - "${PWD}/config/omero.config:/home/omero/omero.config"
     ports:
         - "4064:4064"
         - "4063:4063"
