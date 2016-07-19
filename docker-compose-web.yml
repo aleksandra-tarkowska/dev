@@ -13,11 +13,8 @@ omeroweb:
         - "./src/dist/static:/home/omero/static"
         - "${PWD}/config/omeroweb.config:/home/omero/omeroweb.config"
         - "./src/nginx/conf.d:/home/omero/conf.d"
-    environment:
-        - OMEROWEB_SRC=/home/omero/src/components/tools/OmeroWeb
-        - OMERO_PY=/home/omero/OMERO.py
-        - CUSTOM_PYTHONPATH=/home/omero/OMERO.py/lib/python:/home/omero/OMERO.py/lib/fallback:/home/omero/OMERO.py/lib/scripts
-        - WEB_APPLICATION_SERVER=development  # wsgi-tcp|development|gunicorn
+    env_file:
+        - web.env
 
 nginx:
     extends:

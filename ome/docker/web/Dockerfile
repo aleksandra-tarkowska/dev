@@ -57,6 +57,7 @@ USER omero
 ENV HOME /home/omero
 ENV OMEROWEB_SRC "/home/omero/src/components/tools/OmeroWeb"
 ENV OMERO_PY "/home/omero/OMERO.py"
+ENV WEB_APPLICATION_SERVER "wsgi-tcp"
 WORKDIR /home/omero
 
 RUN virtualenv /home/omero/omeroweb-venv --system-site-packages

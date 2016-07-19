@@ -4,5 +4,5 @@ omerobuild:
         service: baseomerobuild
     volumes:
         - "./src:/home/omero"
-    environment:
-        - "BUILD_CMD=build-dev"
+    env_file:
+        - omero.env

@@ -6,10 +6,4 @@ set -eux
 
 PATHDIR=`dirname $0`
 
-if [ -n "${BUILD_CMD}" ]; then
-    echo "BUILD_CMD is set to: ${BUILD_CMD}"
-else 
-    echo "Warning: BUILD_CMD unset. `source build.env`"
-fi
-
 docker-compose -f docker-compose-build.yml "$@"
