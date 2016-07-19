@@ -25,12 +25,6 @@ Clone repository:
         git clone -b metadata52 git://github.com/openmicroscopy/openmicroscopy src/omero.git
 
 
-Prepare:
---------
-
-    source build.env
-
-
 Build:
 ------
 
