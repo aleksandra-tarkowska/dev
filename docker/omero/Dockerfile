@@ -1,4 +1,4 @@
-FROM omedev_omerobuild:latest
+FROM metadata52_omerobuild:latest
 MAINTAINER A.Tarkowska@dundee.ac.uk
 
 USER root
