@@ -1,10 +1,13 @@
 HOW TO:
 =======
 
+Install Docker for Mac. Docker-Toolbox is not supported.
+
 Clone me:
 
     git clone git://github.com/aleksandra-tarkowska/dev omerodev
     cd omerodev
+
 or
 
     git clone git://github.com/aleksandra-tarkowska/dev metadata52
@@ -34,7 +37,7 @@ Build:
 
 - OMERO:
 
-        BUILD_CMD=build-dev ./omero build|up|rm
+        ./build build|up|rm
 
 Run:
 ----
@@ -49,14 +52,3 @@ Review .env file
 
         ./web build|up -d|logs -f|stop|rm
 
-
-Limitations:
-------------
-
-PG container permission denied on mac. Use host.
-
-    docker run --name mypostgres -p 5432:5432 -d -v ./pgdata:/var/lib/postgresql/data postgres
-
-create omero user
-
-    createuser  -h pg95 -U postgres omero --interactive

@@ -14,6 +14,7 @@ EXPOSE 4063
 # AS OMERO user
 USER omero
 ENV HOME /home/omero
+ENV OMERO_DIST /home/omero/OMERO.server
 WORKDIR /home/omero
 
 CMD ["/tmp/run.sh"]

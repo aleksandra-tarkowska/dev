@@ -1,13 +1,21 @@
+pg95:
+    image: postgres
+    volumes:
+        - ./src/pgdata:/var/lib/postgresql/data
+    
+
 omeroserver:
     extends:
         file: common-services.yml
         service: baseomero
+    links:
+        - pg95
     volumes:
-        - "./dist/OMERO.server:/home/omero/OMERO.server"
-        - "./data:/home/omero/data"
+        - "./src/dist/OMERO.server:/home/omero/OMERO.server"
+        - "./src/data:/home/omero/data"
         - "${PWD}/config/omero.config:/home/omero/omero.config"
+    env_file:
+        - server.env
     ports:
         - "4064:4064"
         - "4063:4063"
-    extra_hosts:
-        - "pg95:10.0.2.2"
