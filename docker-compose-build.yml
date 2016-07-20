@@ -5,4 +5,4 @@ omerobuild:
     volumes:
         - "./src:/home/omero"
     env_file:
-        - omero.env
+        - build.env
