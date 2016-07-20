@@ -13,6 +13,10 @@ or
     git clone git://github.com/aleksandra-tarkowska/dev metadata52
     cd metadata52
 
+if your project name is different you have to manually change name of basic image in ome/docker/omero/Dockerfile
+
+    FROM PROJECTNAME_omerobuild:latest
+
 
 Clone repository:
 -----------------
@@ -44,6 +48,16 @@ Run:
 
 Review .env file
 
+
+To run OMERO.server and OMERO.web
+
+- OMERO:
+
+        ./omero build|up -d|logs -f|stop|rm
+
+
+To run just single component:
+
 - SERVER:
 
         ./server build|up -d|logs -f|stop|rm
@@ -51,4 +65,3 @@ Review .env file
 - WEB:
 
         ./web build|up -d|logs -f|stop|rm
-
