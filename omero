@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# build omero
+
+set -eux
+
+PATHDIR=`dirname $0`
+
+if [ -n "${PWD}" ]; then
+    echo "You are starting server ${PWD}/dist/OMERO.server"
+    docker-compose -f docker-compose-omero.yml "$@"
+fi

@@ -13,7 +13,7 @@ omeroserver:
     volumes:
         - "./src/dist/OMERO.server:/home/omero/OMERO.server"
         - "./src/data:/home/omero/data"
-        - "${PWD}/config/omero.config:/home/omero/omero.config"
+        - "${PWD}/config/omeroserver.config:/home/omero/omero.config"
     env_file:
         - server.env
     ports:

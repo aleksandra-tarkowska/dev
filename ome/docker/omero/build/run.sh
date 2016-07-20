@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -eux
+set -e
 
 ## workaround for Docker on Mac
 ## https://forums.docker.com/t/file-access-in-mounted-volumes-extremely-slow-cpu-bound/8076/

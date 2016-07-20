@@ -47,6 +47,8 @@ RUN pip install sphinx
 # install Pillow
 RUN pip install "Pillow<2.9"
 
+RUN pip install omego
+
 VOLUME /home/omero
 
 # Change user id to fix permissions issues

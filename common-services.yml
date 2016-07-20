@@ -8,7 +8,10 @@ baseomero:
 #    volumes:
 #        - "./dist/OMERO.server:/home/omero/OMERO.server"
 #        - "./data:/home/omero/data"
-#        - "${PWD}/config/omero.config:/home/omero/omero.config"
+#        - "${PWD}/config/omeroserver.config:/home/omero/omero.config"
+#    ports:
+#        - "4064:4064"
+#        - "4063:4063"
 
 baseweb:
     build: ./ome/docker/web
