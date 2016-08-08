@@ -27,7 +27,7 @@ nginx:
         - omeroweb
     volumes:
         - "./src/dist/OMERO.py:/home/omero/OMERO.py"
-        - "${PWD}/src/nginx/conf.d:/etc/nginx/conf.d"
+        - "./src/nginx/conf.d:/etc/nginx/conf.d"
         - "./src/dist/static:/home/omero/static"
         - "./src/nginx/log:/var/log/nginx"
 #        - "./src/nginx/sslcert:/etc/nginx/ssl"

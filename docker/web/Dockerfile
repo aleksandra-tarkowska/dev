@@ -55,9 +55,12 @@ RUN chmod a+x /tmp/run.sh
 # AS OMERO user
 USER omero
 ENV HOME /home/omero
-ENV OMEROWEB_SRC "/home/omero/src/components/tools/OmeroWeb"
 ENV OMERO_PY "/home/omero/OMERO.py"
 ENV WEB_APPLICATION_SERVER "wsgi-tcp"
+# Development env
+ENV OMEROWEB_SRC "/home/omero/src/components/tools/OmeroWeb"
+ENV OMERODEV_PYTHONPATH=/home/omero/OMERO.py/lib/python:/home/omero/OMERO.py/lib/fallback:/home/omero/OMERO.py/lib/scripts
+
 WORKDIR /home/omero
 
 RUN virtualenv /home/omero/omeroweb-venv --system-site-packages

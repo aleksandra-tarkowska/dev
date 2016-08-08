@@ -1,3 +1,4 @@
+# DOCKER for Mac: use local postgres `ifconfig lo0 alias 192.168.100.100`
 pg95:
     image: postgres
     volumes:
@@ -19,7 +20,8 @@ omeroserver:
     ports:
         - "4064:4064"
         - "4063:4063"
-
+#    extra_hosts:
+#        - "pg95:192.168.100.100"
 
 redis:
     image: redis
@@ -34,7 +36,8 @@ omeroweb:
         - redis
     volumes:
         - "./src/omero.git:/home/omero/src"
-        - "./src/dist/OMERO.server:/home/omero/OMERO.py"
+        - "./src/webapp.git:/home/omero/webapp"
+        - "./src/dist/OMERO.py:/home/omero/OMERO.py"
         - "./src/dist/static:/home/omero/static"
         - "${PWD}/config/omeroweb.config:/home/omero/omeroweb.config"
         - "./src/nginx/conf.d:/home/omero/conf.d"
@@ -49,8 +52,8 @@ nginx:
     links:
         - omeroweb
     volumes:
-        - "./src/dist/OMERO.server:/home/omero/OMERO.server"
-        - "${PWD}/src/nginx/conf.d:/etc/nginx/conf.d"
+        - "./src/dist/OMERO.py:/home/omero/OMERO.py"
+        - "./src/nginx/conf.d:/etc/nginx/conf.d"
         - "./src/dist/static:/home/omero/static"
         - "./src/nginx/log:/var/log/nginx"
 #        - "./src/nginx/sslcert:/etc/nginx/ssl"

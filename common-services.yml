@@ -1,35 +1,11 @@
 baseomerobuild:
     build: ./docker/omero/build
-#    volumes:
-#        - ".:/home/omero"
 
 baseomero:
     build: ./docker/omero
-#    volumes:
-#        - "./dist/OMERO.server:/home/omero/OMERO.server"
-#        - "./data:/home/omero/data"
-#        - "${PWD}/config/omeroserver.config:/home/omero/omero.config"
-#    ports:
-#        - "4064:4064"
-#        - "4063:4063"
 
 baseweb:
     build: ./docker/web
-#    volumes:
-#        - "./src/omero.git:/home/omero/src"
-#        - "./src/dist/OMERO.server:/home/omero/OMERO.py"
-#        - "./src/dist/static:/home/omero/static"
-#        - "${PWD}/config/omeroweb.config:/home/omero/omeroweb.config"
-#        - "./src/nginx/conf.d:/home/omero/conf.d"
 
 basenginx:
     build: ./docker/nginx
-#    volumes:
-#        - "./src/dist/OMERO.server:/home/omero/OMERO.server"
-#        - "${PWD}/src/nginx/conf.d:/etc/nginx/conf.d"
-#        - "./src/dist/static:/home/omero/static"
-#        - "./src/nginx/log:/var/log/nginx"
-#        - "./src/nginx/sslcert:/etc/nginx/ssl"
-#    ports:
-#        - "80:80"
-#        - "443:443"

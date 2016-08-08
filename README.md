@@ -5,8 +5,14 @@ Install Docker for Mac. Docker-Toolbox is not supported.
 
 Clone me:
 
-    git clone git://github.com/aleksandra-tarkowska/dev omerodev
-    cd omerodev
+    git clone git://github.com/aleksandra-tarkowska/dev omedev
+    cd omedev
+
+or
+
+    git clone -b metadata52 git://github.com/aleksandra-tarkowska/dev develop
+    cd develop
+
 
 or
 
