@@ -14,7 +14,11 @@ set +o nounset
 source /home/omero/omeroweb-venv/bin/activate
 set -o nounset
 
-export PYTHONPATH=$CUSTOM_PYTHONPATH:${PYTHONPATH-}
+# PYTHONPATH
+if [[ $WEB_APPLICATION_SERVER != 'wsgi-tcp' ]]; then
+    export PYTHONPATH=$OMERODEV_PYTHONPATH:${PYTHONPATH-}
+fi
+export PYTHONPATH=$WEBAPPS_PYTHONPATH:${PYTHONPATH-}
 echo "PYTHONPATH=$PYTHONPATH"
 
 pip install --upgrade -r $OMERO_PY/share/web/requirements-py27-nginx.txt
@@ -23,7 +27,7 @@ echo "Loading OMERO.web config..."
 $OMERO_PY/bin/omero load /home/omero/omeroweb.config
 
 # NGNIX config
-if [[ ! $WEB_APPLICATION_SERVER == 'wsgi-tcp' ]]; then
+if [[ $WEB_APPLICATION_SERVER != 'wsgi-tcp' ]]; then
     # cache original value
     echo "Generating OMERO.web nginx config for $servername:$port ..."
     $OMERO_PY/bin/omero config set omero.web.application_server wsgi-tcp
@@ -48,22 +52,31 @@ if [[ $WEB_APPLICATION_SERVER == 'wsgi-tcp' ]]; then
 
 elif [[ $WEB_APPLICATION_SERVER == 'development' ]]; then
 
-    (cd $OMEROWEB_SRC/omeroweb \
-        && python manage.py collectstatic --noinput)
-    sudo chmod 777 -R $HOME/static/
-
+    $OMERO_PY/bin/omero config set omero.web.application_server 'development'
     $OMERO_PY/bin/omero config set omero.web.debug True
 
     touch $OMERO_PY/var/django.pid
 
-    (cd $OMEROWEB_SRC/omeroweb \
-        && python manage.py runserver 0.0.0.0:4080)
+    if [ -L $OMERO_PY/lib/python/omeroweb ]; then
+        rm $OMERO_PY/lib/python/omeroweb
+    elif [ -d $OMERO_PY/lib/python/omeroweb ]; then
+        rm -rf $OMERO_PY/lib/python/omeroweb
+    fi
+    ln -s $OMEROWEB_SRC/omeroweb/ $OMERO_PY/lib/python/omeroweb
+
+    /home/omero/omeroweb-venv/bin/python $OMEROWEB_SRC/omeroweb/manage.py runserver 0.0.0.0:4080
 
 elif [[ $WEB_APPLICATION_SERVER == 'gunicorn' ]]; then
 
-    (cd $OMEROWEB_SRC/omeroweb \
-        && python manage.py collectstatic --noinput)
-    sudo chmod 777 -R $HOME/static/
+    $OMERO_PY/bin/omero config set omero.web.application_server 'development'
+    $OMERO_PY/bin/omero config set omero.web.debug True
+
+    if [ -L $OMERO_PY/lib/python/omeroweb ]; then
+        rm $OMERO_PY/lib/python/omeroweb
+    elif [ -d $OMERO_PY/lib/python/omeroweb ]; then
+        rm -rf $OMERO_PY/lib/python/omeroweb
+    fi
+    ln -s $OMEROWEB_SRC/omeroweb/ $OMERO_PY/lib/python/omeroweb
 
     (cd $OMEROWEB_SRC/omeroweb \
         && gunicorn \

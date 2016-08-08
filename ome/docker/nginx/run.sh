@@ -2,7 +2,7 @@
 
 set -e
 
-until [ -f /home/omero/OMERO.server/var/django.pid ]; do
+until [ -f /home/omero/OMERO.py/var/django.pid ]; do
   >&2 echo "OMERO.web is unavailable - sleeping"
   sleep 10
 done

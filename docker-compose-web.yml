@@ -9,10 +9,13 @@ omeroweb:
         - redis
     volumes:
         - "./src/omero.git:/home/omero/src"
-        - "./src/dist/OMERO.server:/home/omero/OMERO.py"
+        - "./src/webapp.git:/home/omero/webapp"
+        - "./src/dist/OMERO.py:/home/omero/OMERO.py"
         - "./src/dist/static:/home/omero/static"
         - "${PWD}/config/omeroweb.config:/home/omero/omeroweb.config"
         - "./src/nginx/conf.d:/home/omero/conf.d"
+    ports:
+        - "4080:4080"
     env_file:
         - web.env
 
@@ -23,7 +26,7 @@ nginx:
     links:
         - omeroweb
     volumes:
-        - "./src/dist/OMERO.server:/home/omero/OMERO.server"
+        - "./src/dist/OMERO.py:/home/omero/OMERO.py"
         - "${PWD}/src/nginx/conf.d:/etc/nginx/conf.d"
         - "./src/dist/static:/home/omero/static"
         - "./src/nginx/log:/var/log/nginx"
