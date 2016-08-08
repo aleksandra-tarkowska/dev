@@ -13,7 +13,7 @@ or
     git clone git://github.com/aleksandra-tarkowska/dev metadata52
     cd metadata52
 
-if your project name is different you have to manually change name of basic image in ome/docker/omero/Dockerfile
+if your project name is different you have to manually change name of basic image in docker/omero/Dockerfile
 
     FROM PROJECTNAME_omerobuild:latest
 

@@ -1,10 +1,10 @@
 baseomerobuild:
-    build: ./ome/docker/omero/build
+    build: ./docker/omero/build
 #    volumes:
 #        - ".:/home/omero"
 
 baseomero:
-    build: ./ome/docker/omero
+    build: ./docker/omero
 #    volumes:
 #        - "./dist/OMERO.server:/home/omero/OMERO.server"
 #        - "./data:/home/omero/data"
@@ -14,7 +14,7 @@ baseomero:
 #        - "4063:4063"
 
 baseweb:
-    build: ./ome/docker/web
+    build: ./docker/web
 #    volumes:
 #        - "./src/omero.git:/home/omero/src"
 #        - "./src/dist/OMERO.server:/home/omero/OMERO.py"
@@ -23,7 +23,7 @@ baseweb:
 #        - "./src/nginx/conf.d:/home/omero/conf.d"
 
 basenginx:
-    build: ./ome/docker/nginx
+    build: ./docker/nginx
 #    volumes:
 #        - "./src/dist/OMERO.server:/home/omero/OMERO.server"
 #        - "${PWD}/src/nginx/conf.d:/etc/nginx/conf.d"

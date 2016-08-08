@@ -1,5 +1,5 @@
 bfmaven:
-    build: ./ome/docker/maven
+    build: ./docker/maven
     volumes:
         - "./src:/home/omero"
 #    command:
