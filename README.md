@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/aleksandra-tarkowska/omedev.svg?branch=master)](https://travis-ci.org/aleksandra-tarkowska/omedev)
+
+
 HOW TO:
 =======
 
@@ -16,7 +19,7 @@ or
 
 or
 
-    git clone git://github.com/aleksandra-tarkowska/dev metadata52
+    git clone -b metadata52 git://github.com/aleksandra-tarkowska/dev metadata52
     cd metadata52
 
 if your project name is different you have to manually change name of basic image in docker/omero/Dockerfile
