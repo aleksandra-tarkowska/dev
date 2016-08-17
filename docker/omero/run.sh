@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -e
+set -eux
 
 until psql -h $OMERO_DB_HOST -p $OMERO_DB_PORT -U $OMERO_DB_USER -c '\l'; do
   >&2 echo "$OMERO_DB_HOST is unavailable - sleeping"

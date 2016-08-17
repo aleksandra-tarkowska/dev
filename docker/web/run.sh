@@ -4,7 +4,7 @@
 rm -f $OMERO_PY/var/django.pid
 rm -f $OMERO_PY/var/django_secret_key
 
-set -e
+set -eux
 
 servername="localhost"
 port=80
