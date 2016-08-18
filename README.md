@@ -13,7 +13,7 @@ Clone me:
 
 or
 
-    git clone -b metadata52 git://github.com/aleksandra-tarkowska/dev develop
+    git clone -b develop git://github.com/aleksandra-tarkowska/dev develop
     cd develop
 
 
