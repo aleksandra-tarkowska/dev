@@ -2,6 +2,7 @@ redis:
     image: redis
 
 omeroweb:
+    tty: true
     extends:
         file: common-services.yml
         service: baseweb
