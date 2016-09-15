@@ -1,0 +1,2 @@
+# install webapps
+-e /home/omero/webapp/weberror.git

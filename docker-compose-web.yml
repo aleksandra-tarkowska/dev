@@ -13,6 +13,7 @@ omeroweb:
         - "./src/dist/OMERO.py:/home/omero/OMERO.py"
         - "./src/dist/static:/home/omero/static"
         - "${PWD}/config/omeroweb.config:/home/omero/omeroweb.config"
+        - "${PWD}/config/requirements-webapps.txt:/home/omero/requirements-webapps.txt"
         - "./src/nginx/conf.d:/home/omero/conf.d"
     ports:
         - "4080:4080"

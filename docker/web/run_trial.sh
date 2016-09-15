@@ -4,7 +4,7 @@
 rm -f $OMERO_PY/var/django.pid
 rm -f $OMERO_PY/var/django_secret_key
 
-set -e
+set -eux
 
 servername="localhost"
 port=80
@@ -20,9 +20,9 @@ if [[ $WEB_APPLICATION_SERVER != 'wsgi-tcp' ]]; then
 fi
 echo "PYTHONPATH=$PYTHONPATH"
 
-pip install --upgrade -r $OMERO_PY/share/web/requirements-py27-nginx.txt
+pip install --upgrade -r $OMERO_PY/share/web/requirements-py27-trial.txt
 
-pip install --upgrade -r /home/omero/requirements-webapps.txt
+pip install --upgrade /home/omero/requirements-webapps.txt
 
 echo "Loading OMERO.web config..."
 $OMERO_PY/bin/omero load /home/omero/omeroweb.config
