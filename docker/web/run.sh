@@ -18,10 +18,10 @@ set -o nounset
 if [[ $WEB_APPLICATION_SERVER != 'wsgi-tcp' ]]; then
     export PYTHONPATH=$OMERODEV_PYTHONPATH:${PYTHONPATH-}
 fi
-export PYTHONPATH=$WEBAPPS_PYTHONPATH:${PYTHONPATH-}
 echo "PYTHONPATH=$PYTHONPATH"
 
 pip install --upgrade -r $OMERO_PY/share/web/requirements-py27-nginx.txt
+pip install --upgrade -r $HOME/requirements.txt
 
 echo "Loading OMERO.web config..."
 $OMERO_PY/bin/omero load /home/omero/omeroweb.config

@@ -15,6 +15,7 @@ omeroweb:
         - "./src/dist/static:/home/omero/static"
         - "${PWD}/config/omeroweb.config:/home/omero/omeroweb.config"
         - "./src/nginx/conf.d:/home/omero/conf.d"
+        - "${PWD}/config/requirements.txt:/home/omero/requirements.txt"
     ports:
         - "4080:4080"
     env_file:
