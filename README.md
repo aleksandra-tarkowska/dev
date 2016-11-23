@@ -46,11 +46,11 @@ Build:
 
 - BF:
 
-        ./bf build|up|rm
+        ./bf up --build|rm -fv
 
 - OMERO:
 
-        ./build build|up|rm
+        ./build --build|rm -fv
 
 Run:
 ----
@@ -62,15 +62,19 @@ To run OMERO.server and OMERO.web
 
 - OMERO:
 
-        ./omero build|up -d|logs -f|stop|rm
+        ./omero up --build -d|logs -f|stop|rm -fv
 
 
 To run just single component:
 
 - SERVER:
 
-        ./server build|up -d|logs -f|stop|rm
+        ./server up --build -d|logs -f|stop|rm -fv
 
 - WEB:
 
-        ./web build|up -d|logs -f|stop|rm
+        ./web up --build -d|logs -f|stop|rm -fv
+
+interactive console
+
+        ./web run --rm --service-ports omeroweb
