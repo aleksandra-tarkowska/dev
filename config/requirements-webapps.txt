@@ -1,2 +1,3 @@
 # install webapps
--e /home/omero/webapp/weberror.git
+#-e /home/omero/webapp/weberror.git
+#-e /home/omero/webapp/webtest.git

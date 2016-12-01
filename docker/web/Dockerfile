@@ -61,8 +61,9 @@ WORKDIR /home/omero
 RUN virtualenv /home/omero/omeroweb-venv --system-site-packages
 
 # pip install
-RUN source /home/omero/omeroweb-venv/bin/activate; pip install "django-redis-cache<=1.6.5"
-RUN source /home/omero/omeroweb-venv/bin/activate; pip install "zeroc-ice>3.5,<3.7"
+RUN source /home/omero/omeroweb-venv/bin/activate; pip install \
+    "django-redis>4.4" \
+    "zeroc-ice>3.5,<3.7"
 
 
 CMD ["/tmp/run.sh"]
